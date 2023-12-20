@@ -27,6 +27,7 @@ lifecycle = "2.6.2"
 compose-bom = "2023.10.01"
 compose-compiler = "1.5.6"
 spotless = "6.21.0"
+okhttp = "5.0.0-alpha.11"
 jvm = "17"
 jvmTarget = "11" # R8 Java 17 support pending, https://issuetracker.google.com/issues/227160052
 ktlint = "0.50.0"
@@ -90,6 +91,8 @@ paging-compose = "androidx.paging:paging-compose:3.3.0-alpha02"
 
 retrofit-core = "com.squareup.retrofit2:retrofit:2.9.0"
 retrofit-converter-kotlinx = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+
+okhttp-core = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 
 anvil-annotations = { module = "com.squareup.anvil:annotations", version.ref = "anvil" }
 anvil-compiler = { module = "com.squareup.anvil:compiler", version.ref = "anvil" }
