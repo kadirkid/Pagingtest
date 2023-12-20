@@ -13,25 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pluginManagement {
-    repositories {
-        includeBuild("build-logic")
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+package com.kadirkid.rickandmortydi
 
-rootProject.name = "Pagingtest"
-include(":app")
-include(":design")
-include(":character")
-include(":di")
-include(":di:android")
+import javax.inject.Scope
+import kotlin.reflect.KClass
+
+abstract class AppScope private constructor()
+
+@Scope
+annotation class SingleIn(val scope: KClass<*>)

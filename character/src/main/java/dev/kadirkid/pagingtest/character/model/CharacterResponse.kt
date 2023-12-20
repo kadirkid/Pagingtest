@@ -13,25 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pluginManagement {
-    repositories {
-        includeBuild("build-logic")
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+package dev.kadirkid.pagingtest.character.model
 
-rootProject.name = "Pagingtest"
-include(":app")
-include(":design")
-include(":character")
-include(":di")
-include(":di:android")
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+public data class CharacterResponse(
+    @SerialName("info") val info: Info,
+    @SerialName("results") val characters: List<Character>
+)
+
+@Serializable
+public data class Info(
+    val count: Int,
+    val pages: Int,
+    val next: String?,
+    val prev: String?
+)

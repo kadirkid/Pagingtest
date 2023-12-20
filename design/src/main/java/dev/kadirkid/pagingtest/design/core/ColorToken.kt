@@ -13,25 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pluginManagement {
-    repositories {
-        includeBuild("build-logic")
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+package dev.kadirkid.pagingtest.design.core
+
+import androidx.compose.ui.graphics.Color
+import kotlin.jvm.JvmInline
+
+public sealed interface ColorToken {
+    public val color: Color
 }
 
-rootProject.name = "Pagingtest"
-include(":app")
-include(":design")
-include(":character")
-include(":di")
-include(":di:android")
+@JvmInline
+public value class TextColor internal constructor(override val color: Color) : ColorToken
+
+@JvmInline
+public value class BackgroundColor internal constructor(override val color: Color) : ColorToken {
+    public companion object {
+        public val Unspecified: BackgroundColor = BackgroundColor(Color.Unspecified)
+    }
+}

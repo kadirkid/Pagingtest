@@ -13,25 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pluginManagement {
-    repositories {
-        includeBuild("build-logic")
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+package dev.kadirkid.pagingtest.di.android
 
-rootProject.name = "Pagingtest"
-include(":app")
-include(":design")
-include(":character")
-include(":di")
-include(":di:android")
+import android.app.Activity
+import dagger.MapKey
+import kotlin.reflect.KClass
+
+/**
+ * A Dagger multi-binding key used for registering a [Activity] into the top level dagger graphs.
+ */
+@MapKey
+annotation class ActivityKey(val value: KClass<out Activity>)

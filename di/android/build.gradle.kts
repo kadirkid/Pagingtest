@@ -13,25 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pluginManagement {
-    repositories {
-        includeBuild("build-logic")
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
 }
 
-rootProject.name = "Pagingtest"
-include(":app")
-include(":design")
-include(":character")
-include(":di")
-include(":di:android")
+android.namespace = "dev.kadirkid.pagingtest.di.android"
+
+dependencies {
+    api(libs.androidx.fragment)
+    api(libs.dagger.core)
+    api(libs.androidx.activity)
+    api(libs.androidx.core.ktx)
+    api(libs.androidx.lifecycle.process)
+    api(libs.androidx.lifecycle.runtime)
+}

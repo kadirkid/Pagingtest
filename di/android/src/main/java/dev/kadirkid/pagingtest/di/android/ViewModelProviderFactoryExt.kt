@@ -13,25 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pluginManagement {
-    repositories {
-        includeBuild("build-logic")
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+package dev.kadirkid.pagingtest.di.android
 
-rootProject.name = "Pagingtest"
-include(":app")
-include(":design")
-include(":character")
-include(":di")
-include(":di:android")
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
+
+/**
+ * Returns a [ViewModel] using its Dagger provider.
+ *
+ * @throws IllegalArgumentException if the [ViewModel] is not found.
+ */
+inline fun <reified T : ViewModel> ViewModelProvider.Factory.get(owner: ViewModelStoreOwner): T {
+    return ViewModelProvider(owner, this)[T::class.java]
+}

@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.anvil)
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "dev.kadirkid.pagingtest"
-    compileSdk = 33
 
     defaultConfig {
         applicationId = "dev.kadirkid.pagingtest"
-        minSdk = 24
-        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -39,24 +40,39 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions.jvmTarget = "11"
-
     buildFeatures.compose = true
-    composeOptions.kotlinCompilerExtensionVersion = "1.5.6"
     packaging.resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
 }
 
+anvil {
+    generateDaggerFactories.set(false)
+    syncGeneratedSources.set(true)
+}
+
 dependencies {
-    implementation("androidx.paging:paging-runtime:3.2.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.0")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("io.mockk:mockk:1.13.8")
-    testImplementation("androidx.paging:paging-testing:3.2.1")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    implementation(projects.design)
+    implementation(projects.di)
+    implementation(projects.character)
+    implementation(projects.di.android)
+    implementation(libs.dagger.core)
+    implementation(libs.dagger.android)
+    kapt(libs.dagger.compiler)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.bundles.paging)
+    implementation(libs.androidx.lifecycle.runtime)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converter.kotlinx)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
+    implementation(libs.coil.compose)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.paging.test)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

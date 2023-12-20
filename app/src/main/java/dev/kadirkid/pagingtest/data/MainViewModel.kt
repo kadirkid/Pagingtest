@@ -19,10 +19,18 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import dev.kadirkid.pagingtest.di.android.ViewModelKey
+import com.kadirkid.rickandmortydi.AppScope
+import com.squareup.anvil.annotations.ContributesMultibinding
+import dev.kadirkid.pagingtest.character.model.Character
+import dev.kadirkid.pagingtest.character.data.CharacterPagingSourceFactory
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
-class MainViewModel(private val sourceFactory: RandomPagingSourceFactory) : ViewModel() {
-    val uiState: Flow<PagingData<String>> = Pager(
+@ViewModelKey(MainViewModel::class)
+@ContributesMultibinding(AppScope::class, boundType = ViewModel::class)
+class MainViewModel @Inject constructor(private val sourceFactory: CharacterPagingSourceFactory) : ViewModel() {
+    val uiState: Flow<PagingData<Character>> = Pager(
         config = PagingConfig(pageSize = 10),
         pagingSourceFactory = { sourceFactory.create() }
     ).flow

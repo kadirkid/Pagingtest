@@ -13,25 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pluginManagement {
-    repositories {
-        includeBuild("build-logic")
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+package dev.kadirkid.pagingtest.character.data
 
-rootProject.name = "Pagingtest"
-include(":app")
-include(":design")
-include(":character")
-include(":di")
-include(":di:android")
+import dev.kadirkid.pagingtest.character.model.CharacterResponse
+import retrofit2.http.GET
+import retrofit2.http.Url
+
+public interface CharacterApi {
+    @GET
+    public suspend fun getAllCharacters(@Url url: String): CharacterResponse
+}

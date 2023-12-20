@@ -13,25 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pluginManagement {
-    repositories {
-        includeBuild("build-logic")
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+package dev.kadirkid.pagingtest.design.core
 
-rootProject.name = "Pagingtest"
-include(":app")
-include(":design")
-include(":character")
-include(":di")
-include(":di:android")
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+
+public enum class SizeToken(internal val underlyingSize: Dp) {
+    SMALL(24.dp),
+    MEDIUM(32.dp),
+    LARGE(48.dp),
+    X_LARGE(64.dp),
+    XX_LARGE(96.dp),
+    XXX_LARGE(128.dp),
+    XXXX_LARGE(192.dp),
+    XXXXX_LARGE(256.dp),
+    XXXXXX_LARGE(384.dp),
+}
