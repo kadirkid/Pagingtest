@@ -17,7 +17,7 @@ public data class Character(
     @SerialName("species") val species: String,
     @SerialName("type") val type: String,
     @SerialName("gender") val gender: String,
-    @SerialName("origin") val origin: Origin,
+    @SerialName("origin") val origin: Location,
     @SerialName("location") val location: Location,
     @SerialName("image") val image: String,
     @SerialName("episode") val episode: List<String>,
