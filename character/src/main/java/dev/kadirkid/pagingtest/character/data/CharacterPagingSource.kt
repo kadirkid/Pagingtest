@@ -17,7 +17,7 @@ public class CharacterPagingSource(
         state.anchorPosition?.let { state.closestPageToPosition(anchorPosition = it) }?.prevKey
 
     override suspend fun load(params: LoadParams<String>): LoadResult<String, Character> =
-        runCatching { api.getAllCharacters(params.key ?: DEFAULT_URL).also { println("-----------> RRR: $it") } }.fold(
+        runCatching { api.getAllCharacters(params.key ?: DEFAULT_URL) }.fold(
             onSuccess = {
                 LoadResult.Page(
                     data = it.characters,
