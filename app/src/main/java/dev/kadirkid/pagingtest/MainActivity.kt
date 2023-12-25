@@ -21,8 +21,8 @@ import dev.kadirkid.pagingtest.di.android.get
 import com.kadirkid.rickandmortydi.AppScope
 import com.squareup.anvil.annotations.ContributesMultibinding
 import dev.kadirkid.pagingtest.data.MainViewModel
-import dev.kadirkid.pagingtest.design.PagingTestTheme
 import dev.kadirkid.pagingtest.ui.CharacterPage
+import dev.kadirkid.pagingtest.ui.theme.PagingTestTheme
 import javax.inject.Inject
 
 @ActivityKey(MainActivity::class)

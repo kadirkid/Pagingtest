@@ -41,7 +41,6 @@ anvil {
 }
 
 dependencies {
-    implementation(projects.design)
     implementation(projects.di)
     implementation(projects.character)
     implementation(projects.di.android)
@@ -53,6 +52,9 @@ dependencies {
     implementation(libs.bundles.paging)
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converter.kotlinx)
     implementation(libs.compose.ui.graphics)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)

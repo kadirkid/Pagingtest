@@ -22,7 +22,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Pagingtest"
 include(":app")
-include(":design")
 include(":character")
 include(":di")
 include(":di:android")
